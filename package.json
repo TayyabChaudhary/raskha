@@ -1,0 +1,49 @@
+{
+  "name": "raskha",
+  "license": "0BSD",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@expo-google-fonts/raleway": "^0.2.3",
+    "@react-native-vector-icons/ionicons": "^7.4.0",
+    "@react-navigation/bottom-tabs": "^7.2.0",
+    "@react-navigation/native": "^7.0.14",
+    "@react-navigation/stack": "^7.1.1",
+    "curved-bottom-navigation-bar": "^2.0.5",
+    "expo": "~52.0.27",
+    "expo-contacts": "~14.0.3",
+    "expo-linking": "^7.0.4",
+    "expo-router": "~4.0.17",
+    "expo-splash-screen": "~0.29.21",
+    "expo-status-bar": "~2.0.1",
+    "lottie-react-native": "^7.2.2",
+    "react": "18.3.1",
+    "react-native": "0.76.6",
+    "react-native-curved-bottom-bar": "^3.4.1",
+    "react-native-curved-bottom-tabbar": "^0.0.6",
+    "react-native-gesture-handler": "^2.22.1",
+    "react-native-pager-view": "^6.7.0",
+    "react-native-reanimated": "^3.16.7",
+    "react-native-safe-area-context": "^5.1.0",
+    "react-native-screens": "^4.5.0",
+    "react-native-svg": "^15.11.1",
+    "react-native-vector-icons": "^10.2.0",
+    "react-navigation": "^5.0.0",
+    "react-navigation-stack": "^2.10.4",
+    "react-navigation-tabs": "^2.11.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@types/react": "~18.3.12",
+    "@types/react-native-vector-icons": "^6.4.18",
+    "@types/react-navigation": "^3.4.0",
+    "typescript": "^5.3.3"
+  },
+  "private": true
+}
