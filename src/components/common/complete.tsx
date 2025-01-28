@@ -1,18 +1,52 @@
 import React, { useState } from 'react'
-import { Image, StyleSheet, View, Text, ScrollView, Platform } from 'react-native';
+import { Image, StyleSheet, View, Text, ScrollView, Platform, Alert } from 'react-native';
 
 import { StatusBar } from 'expo-status-bar';
 import { Raleway_400Regular } from "@expo-google-fonts/raleway"
 import ArrowLeftIcon from '../../../assets/svg/arrow-left';
 import InputField from '../global/InputField';
 import Button from '../global/Button';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const CompleteScreen = ({ navigation }: any) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
 
+    const [errors, setErrors] = useState({ name: '', email: '' });
+
+    const validateForm = () => {
+        let valid = true;
+        const newErrors: any = {};
+
+        if (!name.trim()) {
+            newErrors.name = 'Full name is required.';
+            valid = false;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email.trim()) {
+            newErrors.email = 'Email address is required';
+            valid = false;
+        } else if (!emailRegex.test(email.trim())) {
+            newErrors.email = 'Please enter a valid email address';
+            valid = false;
+        }
+
+        setErrors(newErrors);
+        return valid;
+    };
+
+    const handleContinue = () => {
+        if (validateForm()) {
+            navigation.navigate('emergency');
+        } else {
+           
+        }
+    };
+
+
     return (
-        <View style={styles.main}>
+        <SafeAreaProvider style={styles.main}>
             <View style={styles.container}>
                 <Image
                     source={require('../../../assets/images/left-female.png')} // Replace with your image URL or local image source
@@ -30,15 +64,28 @@ const CompleteScreen = ({ navigation }: any) => {
                     <InputField
                         label="First Name*"
                         value={name}
-                        onChangeText={setName}
+                        onChangeText={(text: string) => {
+                            setName(text);
+                            if (text.trim()) setErrors({ ...errors, name: '' });
+                        }}
                         placeholder="Isha Singh"
+                        error={errors.name}
                     />
+                    {errors.name ? <Text style={{ color: '#CB0003', fontWeight: '300' }}>{errors.name}</Text> : null}
+                    
                     <InputField
                         label="Email Address*"
                         value={email}
-                        onChangeText={setEmail}
+                        onChangeText={(text: string) => {
+                            setEmail(text);
+                            if (text.trim() && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(text)) {
+                                setErrors({ ...errors, email: '' });
+                            }
+                        }}
                         placeholder="ishasingh864@gmail.com"
+                        error={errors.email}
                     />
+                    {errors.email ? <Text style={{ color: '#CB0003', fontWeight: '300'}}>{errors.email}</Text> : null}
 
                     <View style={styles.imageContainer}>
                         <Image
@@ -51,13 +98,13 @@ const CompleteScreen = ({ navigation }: any) => {
                 <View style={{ flex: 1 }}>
                     <Button
                         title="Continue"
-                        onPress={() => navigation.navigate('emergency')}
+                        onPress={handleContinue}
                         buttonStyle={styles.buttonStyle}
                         textStyle={styles.textStyle}
                     />
                 </View>
             </ScrollView>
-        </View>
+        </SafeAreaProvider>
     )
 }
 

@@ -1,37 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import { Image, View, Text, ScrollView, Platform, StyleSheet, Dimensions, Animated, TouchableOpacity } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
-import { ArrowsIcon } from '../../../assets/svg/arrow-left';
+import { Image, View, Text, StyleSheet, Dimensions, Animated, TouchableOpacity } from 'react-native';
 import Button from '../global/Button';
-// import { styles } from '../../styles/sos-alert';
-import StopAudioModal from '../global/modal/stop-audio';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import CurvedBottomNavigation from '../ui/curved-bottom-navigation';
 import HomeScreen from './home-page';
 import CompleteScreen from './complete';
 import MainHomeScreen from './home';
-import { Icon } from 'react-native-vector-icons/Icon';
-import { PlatformPressable } from '@react-navigation/elements';
 import { useLinkBuilder, useTheme } from '@react-navigation/native';
 import HomeIcon from '../../../assets/svg/home-icon';
-import EditProfileScreen from './edit-profile';
 import Users from '../../../assets/svg/users';
 import SettingsIcon from '../../../assets/svg/settings-icon';
 import HomeFillWhite from '../../../assets/icons/home-fill-white';
 import ContactFillWhite from '../../../assets/icons/contacts-fill-white';
 import SettingsFillWhite from '../../../assets/icons/settings-fill-white';
 import ProfileIcon from '../../../assets/svg/profile-icon';
-import ProfileFillIcon from '../../../assets/svg/profile-icon';
+import UserFillWhiteIcon from '../../../assets/icons/user-fill-white';
+import SettingScreen from './settings';
 
 const Tab = createBottomTabNavigator();
 
 const TabArr = [
   { route: 'Home', label: "Home", type: 'Home', activeIcon: <HomeFillWhite />, icon: <HomeIcon />, inActiveIcon: require("../../../assets/images/boy.png"), component: MainHomeScreen },
-  { route: 'MainHome', label: "MainHome", type: 'MainHome', icon: <Users />, activeIcon: <ContactFillWhite />, inActiveLabel: 'Hello', component: HomeScreen },
-  { route: 'complete', label: "complete", type: 'complete', icon: <ProfileIcon />, activeIcon: <ProfileFillIcon />, inActiveLabel: <ContactFillWhite />, component: CompleteScreen },
-  { route: 'editProfile', label: "editProfile", type: 'editProfile', icon: <SettingsIcon />, activeIcon: <SettingsFillWhite />, inActiveLabel: 'Hello', component: EditProfileScreen },
-
-
+  { route: 'MainHome', label: "Contact", type: 'MainHome', icon: <Users />, activeIcon: <ContactFillWhite />, inActiveLabel: 'Hello', component: HomeScreen },
+  { route: 'complete', label: "Profile", type: 'complete', icon: <ProfileIcon />, activeIcon: <UserFillWhiteIcon />, inActiveLabel: <ContactFillWhite />, component: CompleteScreen },
+  { route: 'editProfile', label: "Setting", type: 'editProfile', icon: <SettingsIcon />, activeIcon: <SettingsFillWhite />, inActiveLabel: 'Hello', component: SettingScreen },
 ]
 
 function MyTabBar({ state, descriptors, navigation }: any) {
@@ -52,9 +43,9 @@ function MyTabBar({ state, descriptors, navigation }: any) {
 
   return (
     <View style={styles.tabbarContainer}>
-      <Animated.View style={styles.slidingTabContainer}>
+      {/* <Animated.View style={styles.slidingTabContainer}>
         <Animated.View style={[styles.slidingTab, { transform: [{ translateX }] }]} />
-      </Animated.View>
+      </Animated.View> */}
       {state.routes.map((route: any, index: any) => {
         const { options } = descriptors[route.key];
         const label =
@@ -124,34 +115,19 @@ const TabIcon = ({ isFocused, tabIcon, label, index }: any) => {
     }
   }, [index]);
 
-  
+
   return (
     <>
-      <Animated.View style={{ transform: [{ translateY }],  alignItems: 'center', position: 'relative' }}>
-      {isFocused && (
-        <Image
-          source={require('../../../assets/images/path.png')} // Circular background for selected tab
-          style={{
-            position: 'absolute',
-            width: 70,
-            height: 70,
-            bottom: 7,
-            left: -32, // Offset from the left side
-            zIndex: -2, // Behind the icon
-          
-          }}
-        />
-      )}
-        <View style={{ marginBottom: isFocused ? 20 : 3, marginLeft: isFocused ? -20 : 0 }}>
-        {React.isValidElement(tabIcon) && tabIcon}
+      <Animated.View style={{ transform: [{ translateY }], position: 'relative' }}>
+        <View style={[styles.circleCenter, { marginBottom: isFocused ? 36 : 3, marginLeft: isFocused ? -20 : 0, backgroundColor: isFocused ? '#9F1F72' : '', }]}>
+          {React.isValidElement(tabIcon) && tabIcon}
         </View>
-        {/* {isFocused && (
-          <Text style={{ color: 'red', textAlign: 'center' }}>
-            {typeof tabIcon?.label === 'string' ? tabIcon.label : ''}
-          </Text>
-        )} */}
-
       </Animated.View>
+      {isFocused && (
+        <Text style={{ color: '#FFFFFF', position: 'absolute', bottom: 24, textAlign: 'center', fontSize: 14, fontWeight: 500 }}>
+          {label}
+        </Text>
+      )}
     </>
   )
 }
@@ -162,23 +138,23 @@ const TAB_BAR_WIDTH = width - 2 * MARGIN;
 const TAB_WIDTH = TAB_BAR_WIDTH / TabArr.length;
 
 export const SosAlertScreen = ({ navigation }: any) => {
-  const [stopAudio, setstopAudio] = useState(false);
+
   return (
 
     <Tab.Navigator screenOptions={{ headerShown: false }}
       tabBar={props => <MyTabBar {...props} />}>
       {TabArr.map((_, index) => (
         <Tab.Screen key={index} name={_.route} component={_.component}
-        options={{
-          tabBarIcon: ({ focused, color, size }) => {
-            const icon = focused ? _.activeIcon : _.inActiveIcon;
-            return React.isValidElement(icon) ? (
-              icon
-            ) : (
-              <Image source={icon} style={{ width: size, height: size, tintColor: color }} />
-            );
-          },
-        }}></Tab.Screen>
+          options={{
+            tabBarIcon: ({ focused, color, size }) => {
+              const icon = focused ? _.activeIcon : _.inActiveIcon;
+              return React.isValidElement(icon) ? (
+                icon
+              ) : (
+                <Image source={icon} style={{ width: size, height: size, tintColor: color }} />
+              );
+            },
+          }}></Tab.Screen>
       ))}
     </Tab.Navigator>
   )
@@ -191,7 +167,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 2,
-    height: 72,
+    height: 80,
     backgroundColor: '#9F1F72',
     position: 'absolute',
     bottom: 0,
@@ -205,14 +181,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   slidingTab: {
-   width: 70, // Ensure the circle is a perfect square
+    width: 70, // Ensure the circle is a perfect square
     height: 70,
     borderRadius: 35, // Half of the width/height for a circle
     backgroundColor: '#9F1F72', // Circle background
-    alignItems: 'center', // Center icon horizontally
-    justifyContent: 'center', // Center icon vertically
     bottom: 26, // Ensure proper positioning
     position: 'relative',
-    zIndex: 600
-  }
+    zIndex: 900
+  },
+  circleCenter: {
+    justifyContent: 'center', // Centers content vertically
+    alignItems: 'center', // Centers content horizontally
+    width: 70, // Example width
+    height: 70, // Example height
+    borderRadius: 50, // Makes it a circle
+  },
 })

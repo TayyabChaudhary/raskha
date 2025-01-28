@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Image, View, Text, ScrollView, Alert } from 'react-native';
+import { Image, View, Text, ScrollView, Alert, Platform } from 'react-native';
 
 import { StatusBar } from 'expo-status-bar';
 
@@ -59,7 +59,7 @@ const HomeScreen = ({ navigation }: any) => {
     Alert.alert('Resend Code', 'A new code has been sent to your phone.');
   };
   return (
-    <View style={styles.main}>
+    <SafeAreaProvider style={styles.main}>
       <View style={styles.container}>
         <Image
           source={require('../../../assets/images/left-female.png')} // Replace with your image URL or local image source
@@ -84,6 +84,7 @@ const HomeScreen = ({ navigation }: any) => {
               onChangeText={setPhoneNumber}
               placeholder="123 456 789"
               error={error}
+              keyboardType="numeric"
             />
             {error ? <Text style={{ fontSize: 14, width: 280, lineHeight: 23, color: '#CB0003', fontWeight: 300 }}>{error}</Text> : null}
             <OTPInput
@@ -100,7 +101,7 @@ const HomeScreen = ({ navigation }: any) => {
               />
             </View>
           </View>
-          <View style={{ flex: 2 }}>
+          <View style={{ flex: Platform.OS === 'ios' ? 1.2 : 1.6 }}>
             <Button
               title="Continue"
               buttonStyle={styles.buttonStyle}
@@ -108,7 +109,7 @@ const HomeScreen = ({ navigation }: any) => {
           </View>
         </SafeAreaProvider>
       </View>
-    </View>
+    </SafeAreaProvider>
   )
 }
 

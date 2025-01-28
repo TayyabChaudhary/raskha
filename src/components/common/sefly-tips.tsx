@@ -20,7 +20,7 @@ const SeflyTips = ({ navigation }: any) => {
                     style={styles.rightimage}
                 />
                 <View style={styles.titleContainer}>
-                    <ArrowLeftIcon onPress={() => navigation.navigate('settings')} />
+                    <ArrowLeftIcon onPress={() => navigation.navigate('sos')} />
                     <Text style={styles.title}>Safety Tips and Advices</Text>
                 </View>
                 <StatusBar style="light" />

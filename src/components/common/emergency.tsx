@@ -15,6 +15,7 @@ import { modalStyles } from '../../styles/modal-styles';
 import CloseIcon from '../../../assets/svg/close-icon';
 import RegistrationSuccessFullyModal from '../global/register-success-modal';
 import EmergencyContactModal from '../global/modal/emergency-modal';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 // Avatar Component: Displays the first letter of a name inside a circle
 const Avatar = ({ name, customStyles = {} }: { name: string; customStyles?: any }) => {
@@ -149,7 +150,7 @@ const EmergencyScreen = ({ navigation }: any) => {
     };
 
     return (
-        <View style={styles.main}>
+        <SafeAreaProvider style={styles.main}>
             <View style={styles.container}>
                 <Image source={require('../../../assets/images/left-female.png')} style={styles.image} />
                 <Image source={require('../../..//assets/images/right-female.png')} style={styles.rightimage} />
@@ -233,8 +234,7 @@ const EmergencyScreen = ({ navigation }: any) => {
                                     seterrorText(true);
                                 } else {
                                     // setsuccessFullyRegister(true);
-                                    navigation.navigate('MainHome');
-
+                                    navigation.navigate('sos');
                                     seterrorText(false);
                                 }
                             }}
@@ -346,7 +346,7 @@ const EmergencyScreen = ({ navigation }: any) => {
                     </View>
                 </View>
             </Modal>
-        </View>
+        </SafeAreaProvider>
     );
 };
 

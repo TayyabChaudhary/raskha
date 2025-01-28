@@ -3,9 +3,8 @@ import { View, Text, TextInput, StyleSheet, Platform } from 'react-native';
 
 import { Raleway_100Thin_Italic } from "@expo-google-fonts/raleway"
 
-const InputField = ({ label, value, onChangeText, placeholder, style, error }: any) => {
+const InputField = ({ label, value, onChangeText, placeholder, style, error, keyboardType }: any) => {
     const [isFocused, setIsFocused] = useState(false);
-
     return (
         <View style={[styles.container, style]}>
             {/* Label */}
@@ -20,6 +19,7 @@ const InputField = ({ label, value, onChangeText, placeholder, style, error }: a
                 ]}
                 value={value}
                 onChangeText={onChangeText}
+                keyboardType={keyboardType}
                 placeholder={placeholder}
                 placeholderTextColor="#888"
                 selectionColor="#9F1F72"

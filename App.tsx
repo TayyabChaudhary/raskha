@@ -10,6 +10,7 @@ import InstractionScreen from './src/components/common/instraction';
 import SeflyTips from './src/components/common/sefly-tips';
 import {SosAlertScreen} from './src/components/common/sos-alert';
 import SettingScreen from './src/components/common/settings';
+import SosAlertScreens from './src/components/common/sos_alert_screen';
 
 const Stack = createStackNavigator();
 
@@ -26,6 +27,7 @@ const App = () => {
         <Stack.Screen name='sefly' options={{ headerShown: false }} component={SeflyTips} />
         <Stack.Screen name='sos' options={{ headerShown: false }} component={SosAlertScreen} />
         <Stack.Screen name='settings' options={{ headerShown: false }} component={SettingScreen} />
+        <Stack.Screen name='sosAlert' options={{ headerShown: false }} component={SosAlertScreens} />
       </Stack.Navigator>
     </NavigationContainer>
   );

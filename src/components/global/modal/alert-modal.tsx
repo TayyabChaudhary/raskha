@@ -27,8 +27,8 @@ export default function AlertModal({ successFullyRegister, setsuccessFullyRegist
                     <Button
                         title="Yes, Send Alert"
                         buttonStyle={styles.buttonStyle}
-                        textStyle={styles.textStyle} onPress={() => { navigation.navigate('sos'); setsuccessFullyRegister(false) }} />
-                          <Button
+                        textStyle={styles.textStyle} onPress={() => { navigation.navigate('sosAlert'); setsuccessFullyRegister(false) }} />
+                    <Button
                         title="Cancel"
                         buttonStyle={styles.outlineButton}
                         textStyle={styles.outlineText} onPress={() => setsuccessFullyRegister(false)} />
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         marginBottom: 10,
         marginTop: 20,
-    }, 
+    },
     outlineText: {
         fontSize: 18,
         color: '#000',

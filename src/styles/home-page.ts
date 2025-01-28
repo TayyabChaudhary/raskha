@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     height: '100%',
     position: 'relative',
     padding: 2,
+    overflow: 'hidden'
   },
   inputContainer: {
     flexGrow: 1,

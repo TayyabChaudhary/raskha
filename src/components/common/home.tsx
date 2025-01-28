@@ -35,7 +35,7 @@ const MainHomeScreen = ({ navigation }: any) => {
                         <Text style={styles.userName}>Isha Singh</Text>
                         <Text style={styles.userEmail}>ishasingh864@gmail.com</Text>
                     </View>
-                    <HelpIcon onPress={() => setShowAlertModal(true)} />
+                    <HelpIcon onPress={() => { }} />
                 </View>
                 <StatusBar style="light" />
             </View>
@@ -45,13 +45,15 @@ const MainHomeScreen = ({ navigation }: any) => {
                     <View style={styles.container2}>
                         <Text style={styles.para}>Press on the SOS button below and help will reach you shortly.</Text>
                     </View>
-                    <View style={styles.imageContainer}>
-                        <View style={styles.redCircle}>
-                            <View style={styles.shadowCircle}>
-                                <Text style={styles.help}>Help</Text>
+                    <TouchableOpacity onPress={() => setShowAlertModal(true)}>
+                        <View style={styles.imageContainer}>
+                            <View style={styles.redCircle}>
+                                <View style={styles.shadowCircle}>
+                                    <Text style={styles.help}>Help</Text>
+                                </View>
                             </View>
                         </View>
-                    </View>
+                    </TouchableOpacity>
                 </ScrollView>
             </View>
 
