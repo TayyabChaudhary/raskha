@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 10,
-        marginTop: Platform.OS === 'ios' ? width * 0.14 : width * 0.14,
+        marginTop: Platform.OS === 'ios' ? width * 0.05 : width * 0,
         marginLeft: -0
     },
     title: {
