@@ -1,4 +1,6 @@
-import { Platform, StyleSheet } from "react-native";
+import { Dimensions, Platform, StyleSheet } from "react-native";
+
+const { width, height } = Dimensions.get("window");
 
 export const styles = StyleSheet.create({
     main: {
@@ -92,13 +94,14 @@ export const styles = StyleSheet.create({
     },
     contineButton: {
         width: '100%',
-        marginVertical: Platform.OS === 'ios' ? 200 : 70,
+        marginTop: Platform.OS === 'ios' ? width * 0.5 : width * 0.5,
     },
     text: {
         fontSize: 14,
         fontWeight: 300,
         textAlign: 'center',
-        color: "#CB0003"
+        color: "#CB0003",
+        marginBottom: width * 0.04
     },
     avatar: {
         width: 35,
@@ -115,7 +118,6 @@ export const styles = StyleSheet.create({
       },
     buttonStyle: {
         width: '100%',
-        marginVertical: 24,
         boxShadow: '0px 4px 20px 0px rgba(159, 31, 114, 0.33)',
     },
     textStyle: {
@@ -145,11 +147,11 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 10,
-        marginTop: 70,
+        marginTop: Platform.OS === 'ios' ? width * 0.15 : width * 0.14,
         marginLeft: 0
     },
     title: {
-        fontSize: 25,
+        fontSize: Platform.OS === 'ios' ? width * 0.06 : width * 0.06,
         fontWeight: 400,
         color: "#fff",
     },

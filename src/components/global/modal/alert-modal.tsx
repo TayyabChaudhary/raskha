@@ -1,9 +1,9 @@
-import { View, Text, Image, TouchableOpacity, Modal, StyleSheet, Platform } from 'react-native'
+import { View, Text, Image, TouchableOpacity, Modal, StyleSheet, Platform, Dimensions } from 'react-native'
 import React from 'react'
 import { modalStyles } from '../../../styles/modal-styles'
 import CloseIcon from '../../../../assets/svg/close-icon'
 import Button from '../Button'
-
+const { width } = Dimensions.get("window");
 export default function AlertModal({ successFullyRegister, setsuccessFullyRegister, navigation }: any) {
     return (
         <Modal
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
         paddingRight: 30,
         height: 'auto',
-        width: '80%',
+        width: Platform.OS === 'ios' ? width * 0.9 : width * 0.9,
         alignItems: 'center',
         position: 'relative'
     },

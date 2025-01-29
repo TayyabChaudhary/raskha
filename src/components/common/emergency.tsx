@@ -27,6 +27,7 @@ const Avatar = ({ name, customStyles = {} }: { name: string; customStyles?: any 
     );
 };
 
+
 const EmergencyScreen = ({ navigation }: any) => {
     const router = useRouter();
     const [hasSelectedContact, setHasSelectedContact] = useState<any>({});
@@ -176,12 +177,6 @@ const EmergencyScreen = ({ navigation }: any) => {
                                     style={Addstyles[`cirlce${circleId}`]}
                                     onPress={() => {
                                         if (hasSelectedContact[circleId]) {
-
-                                            // Alert.alert(
-                                            //     hasSelectedContact[circleId].name,
-                                            //     `Phone: ${hasSelectedContact[circleId].phoneNumber}`,
-                                            //     [{ text: 'OK' }]
-                                            // );
                                             if (hasSelectedContact[circleId]) {
                                                 setSelectedContact({
                                                     name: hasSelectedContact[circleId].name,

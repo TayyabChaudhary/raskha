@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Image, StyleSheet, View, Text, ScrollView, Platform, Alert } from 'react-native';
+import { Image, StyleSheet, View, Text, ScrollView, Platform, Alert, Dimensions } from 'react-native';
 
 import { StatusBar } from 'expo-status-bar';
 import { Raleway_400Regular } from "@expo-google-fonts/raleway"
@@ -7,6 +7,8 @@ import ArrowLeftIcon from '../../../assets/svg/arrow-left';
 import InputField from '../global/InputField';
 import Button from '../global/Button';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+
+const { width, height } = Dimensions.get("window");
 
 const CompleteScreen = ({ navigation }: any) => {
     const [name, setName] = useState('');
@@ -141,13 +143,13 @@ const styles = StyleSheet.create({
     },
     otpImage: {
         width: 280,
-        height: Platform.OS === 'ios' ? 310 : 180,
+        height: Platform.OS === 'ios' ? width * 0.60 : 180,
         objectFit: 'contain',
         marginBottom: 0,
     },
     buttonStyle: {
         width: '100%',
-        marginVertical: 50,
+        marginTop: width * 0.01,
         boxShadow: '0px 4px 20px 0px rgba(159, 31, 114, 0.33)',
     },
     textStyle: {
@@ -176,11 +178,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 10,
-        marginTop: 70,
+        marginTop: Platform.OS === 'ios' ? width * 0.14 : width * 0.14,
         marginLeft: -0
     },
     title: {
-        fontSize: 24,
+        fontSize: width * 0.05,
         fontWeight: 600,
         color: "#fff",
         fontFamily: `${Raleway_400Regular}`

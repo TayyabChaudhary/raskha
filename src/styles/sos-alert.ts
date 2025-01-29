@@ -1,4 +1,6 @@
-import { Platform, StyleSheet } from "react-native";
+import { Dimensions, Platform, StyleSheet } from "react-native";
+
+const { width } = Dimensions.get("window");
 
 export const styles = StyleSheet.create({
     main: {
@@ -99,7 +101,7 @@ export const styles = StyleSheet.create({
         marginLeft: -6
     },
     title: {
-        fontSize: 24,
+        fontSize: Platform.OS === 'ios' ? width * 0.05 : width * 0.9,
         fontWeight: Platform.OS === 'ios' ? 700 : 800,
         color: "#fff",
     },
@@ -123,6 +125,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
     },
     card: {
+        width: Platform.OS === 'ios' ? width * 0.9 : width * 0.9,
         backgroundColor: '#fff',
         borderRadius: 10,
         padding: 10,
