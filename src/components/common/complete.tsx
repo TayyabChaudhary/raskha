@@ -178,11 +178,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 10,
-        marginTop: Platform.OS === 'ios' ? width * 0.05 : width * 0,
+        marginTop: Platform.OS === 'ios' ? width * 0.15 : width * 0.20,
         marginLeft: -0
     },
     title: {
-        fontSize: width * 0.05,
+        fontSize: width * 0.06,
         fontWeight: 600,
         color: "#fff",
         fontFamily: `${Raleway_400Regular}`

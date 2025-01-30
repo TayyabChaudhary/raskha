@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
         height: '100%',
         position: 'relative',
         padding: 2,
-        paddingTop: 60
+        paddingTop: Platform.OS === 'ios' ? 60 : 35
     },
     title2: {
         fontSize: 22,

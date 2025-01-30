@@ -63,6 +63,10 @@ export default function FeedbackModal({ successFullyRegister, setsuccessFullyReg
                                 <Text>😊</Text>
                                 <Text style={{ fontSize: 12, marginTop: 5, color: '#514A4F' }}>Good</Text>
                             </View>
+                            <View style={styles.box}>
+                                <Text>😊</Text>
+                                <Text style={{ fontSize: 12, marginTop: 5, color: '#514A4F' }}>Good</Text>
+                            </View>
                         </View>
                         <Text style={{ fontSize: 18, color: '#514A4F', fontWeight: 400, textAlign: 'left', marginTop: 20 }}>What’s your overall experience?</Text>
                         <TextInput
@@ -104,12 +108,12 @@ const styles = StyleSheet.create({
         paddingBottom: 30,
         paddingRight: 30,
         height: 'auto',
-        width: '90%',
+        width: Platform.OS === 'ios' ? '90%' : '95%',
         alignItems: 'center',
         position: 'relative'
     },
     input: {
-        height: 130,
+        height: 100,
         textAlignVertical: 'top',
         borderWidth: 1,
         borderColor: '#B1B1B1',
@@ -136,8 +140,8 @@ const styles = StyleSheet.create({
         marginTop: 18,
     },
     box: {
-        height: 70,
-        width: 70,
+        height: 50,
+        width: 55,
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#B1B1B1',
@@ -146,7 +150,7 @@ const styles = StyleSheet.create({
 
     },
     buttonStyle: {
-        width: Platform.OS === 'ios' ? 'auto' : 'auto',
+        width: Platform.OS === 'ios' ? 'auto' : 95,
         textAlign: 'center',
         boxShadow: '0px 4px 20px 0px rgba(159, 31, 114, 0.33)',
         borderRadius: 10,
@@ -159,7 +163,7 @@ const styles = StyleSheet.create({
         fontWeight: 500
     },
     outlineButton: {
-        width: Platform.OS === 'ios' ? 100 : 250,
+        width: Platform.OS === 'ios' ? 100 : 90,
         textAlign: 'center',
         backgroundColor: 'transparent',
         borderRadius: 100,

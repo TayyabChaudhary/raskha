@@ -94,7 +94,7 @@ export const styles = StyleSheet.create({
     },
     contineButton: {
         width: '100%',
-        marginTop: Platform.OS === 'ios' ? width * 0.5 : width * 0.5,
+        marginTop: Platform.OS === 'ios' ? width * 0.5 : width * 0.30,
     },
     text: {
         fontSize: 14,
@@ -151,7 +151,7 @@ export const styles = StyleSheet.create({
         marginLeft: 0
     },
     title: {
-        fontSize: Platform.OS === 'ios' || Platform.OS === 'android' ? width * 0.05 : width * 0.05,
+        fontSize: Platform.OS === 'ios' || Platform.OS === 'android' ? width * 0.06 : width * 0.05,
         fontWeight: 400,
         color: "#fff",
     },

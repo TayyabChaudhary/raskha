@@ -101,7 +101,7 @@ export const styles = StyleSheet.create({
         marginLeft: -6
     },
     title: {
-        fontSize: Platform.OS === 'ios' ? width * 0.05 : width * 0.9,
+        fontSize: Platform.OS === 'ios' ? width * 0.06 : width * 0.07,
         fontWeight: Platform.OS === 'ios' ? 700 : 800,
         color: "#fff",
     },
