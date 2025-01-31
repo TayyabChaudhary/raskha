@@ -120,9 +120,9 @@ const TabIcon = ({ isFocused, tabIcon, label, index }: any) => {
     <>
       <Animated.View style={{ transform: [{ translateY }], position: 'relative' }}>
         <View style={{ position: 'relative' }}>
-          <View style={[styles.circleCenter, { marginBottom: isFocused ? 36 : 3, marginLeft: isFocused ? -20 : 0, backgroundColor: isFocused ? '#9F1F72' : '', }]}>
-          {React.isValidElement(tabIcon) && tabIcon}
-        </View>
+          <View style={[styles.circleCenter, { marginBottom: isFocused ? 44 : 3, marginLeft: isFocused ? -20 : 0, backgroundColor: isFocused ? '#9F1F72' : '', }]}>
+            {React.isValidElement(tabIcon) && tabIcon}
+          </View>
           {isFocused && <Image source={require('../../../assets/images/path.png')} style={styles.circlePath} />}
         </View>
 
@@ -200,15 +200,16 @@ const styles = StyleSheet.create({
     width: 60, // Example width
     height: 60, // Example height
     borderRadius: 50, // Makes it a circle
+    marginTop: -5,
   },
   circlePath: {
-    width: 80,
-    height: 94,
+    width: 105,
+    height: 100,
     borderRadius: 100,
-    objectFit: 'cover',
+    objectFit: 'fill',
     position: 'absolute',
-    left: -30,
-    top: -27,
+    left: -43,
+    top: -38,
     zIndex: -3
   }
 })

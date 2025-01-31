@@ -36,8 +36,8 @@ export const ArrowLeftProfile = ({ onPress }: { onPress: () => void }) => {
 
 export const HelpIcon = ({ onPress }: { onPress: () => void }) => {
     return (
-        <TouchableOpacity onPress={onPress} style={{ position: 'absolute', top: 30, right: Platform.OS === 'ios' ? -98 : -90 }}>
-            <Svg width="30" height="28" viewBox="0 0 27 27" fill="none">
+        <TouchableOpacity onPress={onPress} style={{ position: 'absolute', top: 32, right: Platform.OS === 'ios' ? -100 : -90 }}>
+            <Svg width="28" height="25" viewBox="0 0 27 27" fill="none">
                 <Path
                     fill-rule="evenodd" clip-rule="evenodd" d="M3.97291 19.7327C4.21381 20.1 4.28653 20.5528 4.17283 20.9771L3.51193 23.4436L5.96224 22.787C6.38949 22.6726 6.84533 22.7471 7.21383 22.9917C9.01436 24.1868 11.1734 24.8831 13.4998 24.8831C19.7865 24.8831 24.883 19.7866 24.883 13.4998C24.883 7.21309 19.7865 2.11666 13.4998 2.11666C7.21306 2.11666 2.11662 7.21309 2.11662 13.4998C2.11662 15.8034 2.79927 17.9429 3.97291 19.7327ZM2.6837 20.5781C1.35039 18.5448 0.574951 16.113 0.574951 13.4998C0.574951 6.36165 6.36161 0.574993 13.4998 0.574993C20.638 0.574993 26.4246 6.36165 26.4246 13.4998C26.4246 20.6381 20.638 26.4247 13.4998 26.4247C10.8609 26.4247 8.40666 25.6338 6.36126 24.2763L3.91095 24.9327C2.76461 25.2399 1.71565 24.191 2.02281 23.0446L2.6837 20.5781Z" fill="white"
                 />
