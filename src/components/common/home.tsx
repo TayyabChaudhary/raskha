@@ -35,7 +35,7 @@ const MainHomeScreen = ({ navigation }: any) => {
                         <Text style={styles.userName}>Isha Singh</Text>
                         <Text style={styles.userEmail}>ishasingh864@gmail.com</Text>
                     </View>
-                    <HelpIcon onPress={() => { }} />
+                    <HelpIcon onPress={() => navigation.navigate("instructions")} />
                 </View>
                 <StatusBar style="light" />
             </View>

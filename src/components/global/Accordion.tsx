@@ -38,7 +38,7 @@ const Accordion: React.FC<AccordionProps> = ({ title, children }) => {
 
   const heightInterpolation = animation.interpolate({
     inputRange: [0, 1],
-    outputRange: [0, 150], // Adjust 150 to the max content height
+    outputRange: [0, 90], // Adjust 150 to the max content height
   });
 
   return (

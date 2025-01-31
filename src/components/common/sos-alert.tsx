@@ -20,8 +20,8 @@ const Tab = createBottomTabNavigator();
 
 const TabArr = [
   { route: 'Home', label: "Home", type: 'Home', activeIcon: <HomeFillWhite />, icon: <HomeIcon />, inActiveIcon: require("../../../assets/images/boy.png"), component: MainHomeScreen },
-  { route: 'MainHome', label: "Contact", type: 'MainHome', icon: <Users />, activeIcon: <ContactFillWhite />, inActiveLabel: 'Hello', component: HomeScreen },
-  { route: 'complete', label: "Profile", type: 'complete', icon: <ProfileIcon />, activeIcon: <UserFillWhiteIcon />, inActiveLabel: <ContactFillWhite />, component: CompleteScreen },
+  { route: 'MainHome', label: "Contact", type: 'MainHome', icon: <Users />, activeIcon: <ContactFillWhite />, inActiveLabel: 'Hello', component: MainHomeScreen },
+  { route: 'complete', label: "Profile", type: 'complete', icon: <ProfileIcon />, activeIcon: <UserFillWhiteIcon />, inActiveLabel: <ContactFillWhite />, component: MainHomeScreen },
   { route: 'editProfile', label: "Setting", type: 'editProfile', icon: <SettingsIcon />, activeIcon: <SettingsFillWhite />, inActiveLabel: 'Hello', component: SettingScreen },
 ]
 
@@ -119,12 +119,16 @@ const TabIcon = ({ isFocused, tabIcon, label, index }: any) => {
   return (
     <>
       <Animated.View style={{ transform: [{ translateY }], position: 'relative' }}>
-        <View style={[styles.circleCenter, { marginBottom: isFocused ? 36 : 3, marginLeft: isFocused ? -20 : 0, backgroundColor: isFocused ? '#9F1F72' : '', }]}>
+        <View style={{ position: 'relative' }}>
+          <View style={[styles.circleCenter, { marginBottom: isFocused ? 36 : 3, marginLeft: isFocused ? -20 : 0, backgroundColor: isFocused ? '#9F1F72' : '', }]}>
           {React.isValidElement(tabIcon) && tabIcon}
         </View>
+          {isFocused && <Image source={require('../../../assets/images/path.png')} style={styles.circlePath} />}
+        </View>
+
       </Animated.View>
       {isFocused && (
-        <Text style={{ color: '#FFFFFF', position: 'absolute', bottom: 24, textAlign: 'center', fontSize: 14, fontWeight: 500 }}>
+        <Text style={{ color: '#FFFFFF', position: 'absolute', bottom: 20, textAlign: 'center', fontSize: 14, fontWeight: 500 }}>
           {label}
         </Text>
       )}
@@ -167,12 +171,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 2,
-    height: 80,
+    height: 88,
     backgroundColor: '#9F1F72',
     position: 'absolute',
     bottom: 0,
     left: 0,
     right: 0,
+    zIndex: 100
   },
   slidingTabContainer: {
     width: TAB_WIDTH,
@@ -187,13 +192,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#9F1F72', // Circle background
     bottom: 26, // Ensure proper positioning
     position: 'relative',
-    zIndex: 900
+    zIndex: 20
   },
   circleCenter: {
     justifyContent: 'center', // Centers content vertically
     alignItems: 'center', // Centers content horizontally
-    width: 70, // Example width
-    height: 70, // Example height
+    width: 60, // Example width
+    height: 60, // Example height
     borderRadius: 50, // Makes it a circle
   },
+  circlePath: {
+    width: 80,
+    height: 94,
+    borderRadius: 100,
+    objectFit: 'cover',
+    position: 'absolute',
+    left: -30,
+    top: -27,
+    zIndex: -3
+  }
 })
